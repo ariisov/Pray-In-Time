@@ -1,91 +1,55 @@
 {
   "images" : [
     {
+      "filename" : "imgonline-com-ua-Resize-rzJXLdacnXDMVlE.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "20x20"
     },
     {
+      "filename" : "imgonline-com-ua-Resize-gQJ2ZpQyCkQ5w.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "20x20"
     },
     {
+      "filename" : "imgonline-com-ua-Resize-jIhBZnGgZyEo.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
+      "filename" : "imgonline-com-ua-Resize-wgAa5TpRSYbk0d.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "29x29"
     },
     {
+      "filename" : "imgonline-com-ua-Resize-PrG4uinobrTKYz8S.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "40x40"
     },
     {
+      "filename" : "imgonline-com-ua-Resize-bs1jDmFTulGLdeR-1.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "40x40"
     },
     {
+      "filename" : "imgonline-com-ua-Resize-bs1jDmFTulGLdeR.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "60x60"
     },
     {
+      "filename" : "imgonline-com-ua-Resize-RWet0n0WUGPtKD.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "60x60"
     },
     {
-      "idiom" : "ipad",
-      "scale" : "1x",
-      "size" : "20x20"
-    },
-    {
-      "idiom" : "ipad",
-      "scale" : "2x",
-      "size" : "20x20"
-    },
-    {
-      "idiom" : "ipad",
-      "scale" : "1x",
-      "size" : "29x29"
-    },
-    {
-      "idiom" : "ipad",
-      "scale" : "2x",
-      "size" : "29x29"
-    },
-    {
-      "idiom" : "ipad",
-      "scale" : "1x",
-      "size" : "40x40"
-    },
-    {
-      "idiom" : "ipad",
-      "scale" : "2x",
-      "size" : "40x40"
-    },
-    {
-      "idiom" : "ipad",
-      "scale" : "1x",
-      "size" : "76x76"
-    },
-    {
-      "idiom" : "ipad",
-      "scale" : "2x",
-      "size" : "76x76"
-    },
-    {
-      "idiom" : "ipad",
-      "scale" : "2x",
-      "size" : "83.5x83.5"
-    },
-    {
+      "filename" : "imgonline-com-ua-Resize-vdo5LEtFk12J.png",
       "idiom" : "ios-marketing",
       "scale" : "1x",
       "size" : "1024x1024"
