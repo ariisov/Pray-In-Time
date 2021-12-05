@@ -38,7 +38,7 @@ class ViewController: UIViewController
     var timer = Timer()
 
     var installedTimes = Array(repeating: "", count: 6)
-    
+        
     // MARK: ViewDidLoad
     
     override func viewDidLoad() {
@@ -72,17 +72,22 @@ class ViewController: UIViewController
         if UserDefaults.standard.bool(forKey: "isYastuButtonDark") {
             changeYastuButtonDarkness()
         }
+        
         if UserDefaults.standard.bool(forKey: "Time was set"){
-            alreadySetTimes()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM.dd"
+            if (UserDefaults.standard.string(forKey: "Date") == dateFormatter.string(from: Date())){
+                alreadySetTimes()
+            }
+            else{
+                launchGetTimes()
+                dateFormatter.dateFormat = "MM.dd"
+                UserDefaults.standard.set(dateFormatter.string(from: Date()), forKey: "Date")
+
+            }
         }
         else {
-            let queue = DispatchQueue.global(qos: .utility)
-            queue.async {
-                self.timesWriting()
-                DispatchQueue.main.async {
-                    self.alreadySetTimes()
-                }
-            }
+            launchGetTimes()
         }
         let distanceBetweenButtons = morningButton.frame.height / 8
         oyleButton.topAnchor.constraint(equalTo: morningButton.bottomAnchor, constant: distanceBetweenButtons).isActive = true
@@ -91,19 +96,24 @@ class ViewController: UIViewController
         yastuButton.topAnchor.constraint(equalTo: ahsamButton.bottomAnchor, constant: distanceBetweenButtons).isActive = true
     }
     
+    // MARK: Timer clock
     func scheduledTimerWithTimeInterval(){
-        
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in self.timeUpdating() })
     }
+    
     func timeUpdating(){
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm:ss"
         self.clockTimeLabel.text = dateFormatter.string(from: Date())
     }
 
+    // MARK: Installing dark status bar
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .darkContent
     }
+    
+    
+    // MARK: Setting Times
     
     func alreadySetTimes(){
         installedTimes = UserDefaults.standard.stringArray(forKey: "Already set times")!
@@ -113,18 +123,11 @@ class ViewController: UIViewController
         self.ikendeTimeLabel.text =         installedTimes[3]
         self.ahsamTimeLabel.text =          installedTimes[4]
         self.yastuTimeLabel.text =          installedTimes[5]
-        
-
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-    }
-    
     
     // MARK: Output times to the labels
-    func timesWriting()
+    
+    func getTimesFromSource()
     {
         var xlsxFile: XLSXFile?
         
@@ -144,9 +147,6 @@ class ViewController: UIViewController
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy.MM.dd"
 
-
-                
-                
 //                for row in worksheet.data?.rows ?? [] {
 //                    print("\n\nRow \(row.reference) of size \(row.cells.count)")
 //
@@ -186,8 +186,6 @@ class ViewController: UIViewController
                         }
                     }
                 } while (true)
-
-
                 
                 let morningStartSelectedCell = worksheet.cells(atColumns: [ ColumnReference("B")! ], rows: [ rowNumber ]).first
                 var hour = Calendar.current.component(.hour, from: morningStartSelectedCell!.dateValue!)
@@ -196,41 +194,57 @@ class ViewController: UIViewController
                 dateFormatterGet.dateFormat = "HH:mm"
                 dateFormatter.dateFormat = "HH:mm"
                 var date: Date? = dateFormatterGet.date(from: "\(hour):\(minute)")
-                self.installedTimes[0].append(contentsOf: dateFormatter.string(from: date!))
                 
+                self.installedTimes[0] = dateFormatter.string(from: date!)
                 
                 let morningFinishSelectedCell = worksheet.cells(atColumns: [ ColumnReference("D")! ], rows: [ rowNumber ]).first
                 hour = Calendar.current.component(.hour, from: morningFinishSelectedCell!.dateValue!)
                 minute = Calendar.current.component(.minute, from: morningFinishSelectedCell!.dateValue!)
                 date = dateFormatterGet.date(from: "\(hour):\(minute)")
-                self.installedTimes[1].append(contentsOf: dateFormatter.string(from: date!))
+                self.installedTimes[1] = dateFormatter.string(from: date!)
+
 
                 let oyleSelectedCell = worksheet.cells(atColumns: [ ColumnReference("E")! ], rows: [ rowNumber ]).first
                 hour = Calendar.current.component(.hour, from: oyleSelectedCell!.dateValue!)
                 minute = Calendar.current.component(.minute, from: oyleSelectedCell!.dateValue!)
                 date = dateFormatterGet.date(from: "\(hour):\(minute)")
-                self.installedTimes[2].append(contentsOf: dateFormatter.string(from: date!))
-
+                self.installedTimes[2] = dateFormatter.string(from: date!)
                 
+                if (dateFormatter.string(from: Date()) > dateFormatter.string(from: date!)){
+                    let morningStartSelectedCell = worksheet.cells(atColumns: [ ColumnReference("B")! ], rows: [ rowNumber + 1 ]).first
+                    var hour = Calendar.current.component(.hour, from: morningStartSelectedCell!.dateValue!)
+                    var minute = Calendar.current.component(.minute, from: morningStartSelectedCell!.dateValue!)
+
+                    dateFormatterGet.dateFormat = "HH:mm"
+                    dateFormatter.dateFormat = "HH:mm"
+                    var date: Date? = dateFormatterGet.date(from: "\(hour):\(minute)")
+                    
+                    self.installedTimes[0] = dateFormatter.string(from: date!)
+                    
+                    let morningFinishSelectedCell = worksheet.cells(atColumns: [ ColumnReference("D")! ], rows: [ rowNumber + 1 ]).first
+                    hour = Calendar.current.component(.hour, from: morningFinishSelectedCell!.dateValue!)
+                    minute = Calendar.current.component(.minute, from: morningFinishSelectedCell!.dateValue!)
+                    date = dateFormatterGet.date(from: "\(hour):\(minute)")
+                    self.installedTimes[1] = dateFormatter.string(from: date!)
+                }
+
                 let ikendeSelectedCell = worksheet.cells(atColumns: [ ColumnReference("G")! ], rows: [ rowNumber ]).first
                 hour = Calendar.current.component(.hour, from: ikendeSelectedCell!.dateValue!)
                 minute = Calendar.current.component(.minute, from: ikendeSelectedCell!.dateValue!)
                 date = dateFormatterGet.date(from: "\(hour):\(minute)")
-                self.installedTimes[3].append(contentsOf: dateFormatter.string(from: date!))
+                self.installedTimes[3] = dateFormatter.string(from: date!)
 
                 let ahsamSelectedCell = worksheet.cells(atColumns: [ ColumnReference("H")! ], rows: [ rowNumber ]).first
                 hour = Calendar.current.component(.hour, from: ahsamSelectedCell!.dateValue!)
                 minute = Calendar.current.component(.minute, from: ahsamSelectedCell!.dateValue!)
                 date = dateFormatterGet.date(from: "\(hour):\(minute)")
-                self.installedTimes[4].append(contentsOf: dateFormatter.string(from: date!))
-
+                self.installedTimes[4] = dateFormatter.string(from: date!)
+                
                 let yastuSelectedCell = worksheet.cells(atColumns: [ ColumnReference("I")! ], rows: [ rowNumber ]).first
                 hour = Calendar.current.component(.hour, from: yastuSelectedCell!.dateValue!)
                 minute = Calendar.current.component(.minute, from: yastuSelectedCell!.dateValue!)
                 date = dateFormatterGet.date(from: "\(hour):\(minute)")
-                self.installedTimes[5].append(contentsOf: dateFormatter.string(from: date!))
-                
-
+                self.installedTimes[5] = dateFormatter.string(from: date!)
 
                 UserDefaults.standard.set(true, forKey: "Time was set")
                 UserDefaults.standard.set(installedTimes, forKey: "Already set times")
@@ -240,8 +254,6 @@ class ViewController: UIViewController
         }
     }
 
-    
-    
     // MARK: Morning button's methods
  
     fileprivate func changeMorningButtonDarkness() {
@@ -323,6 +335,18 @@ class ViewController: UIViewController
         
         UserDefaults.standard.set(false, forKey: "Time was set")
 
+        launchGetTimes()
+    }
+    
+    func launchGetTimes(){
+        let queue = DispatchQueue.global(qos: .utility)
+        alreadySetTimes()
+        queue.async {
+            self.getTimesFromSource()
+            DispatchQueue.main.async {
+                self.alreadySetTimes()
+            }
+        }
     }
     
 }

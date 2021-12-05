@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		86A1C6E3305D79733875A38B /* Pods_PrayInTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62923A5965829787E7A25F0 /* Pods_PrayInTime.framework */; };
-		9E129E63275610F0002A0583 /* TimeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E129E62275610F0002A0583 /* TimeParser.swift */; };
 		9E4FDFD4275959B0005D6BE5 /* Archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4FDFD3275959B0005D6BE5 /* Archive.swift */; };
 		9E4FDFD6275A22CA005D6BE5 /* Times of Namaz.xlsx in Resources */ = {isa = PBXBuildFile; fileRef = 9E4FDFD5275A22C9005D6BE5 /* Times of Namaz.xlsx */; };
 		9E824EEC273FDD8000592526 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E824EEB273FDD8000592526 /* AppDelegate.swift */; };
@@ -23,7 +22,6 @@
 /* Begin PBXFileReference section */
 		14209D2E8954364C00E722B8 /* Pods-PrayInTime.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrayInTime.release.xcconfig"; path = "Target Support Files/Pods-PrayInTime/Pods-PrayInTime.release.xcconfig"; sourceTree = "<group>"; };
 		28F24ADB4BDB8AF7FE9C2851 /* Pods-PrayInTime.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrayInTime.debug.xcconfig"; path = "Target Support Files/Pods-PrayInTime/Pods-PrayInTime.debug.xcconfig"; sourceTree = "<group>"; };
-		9E129E62275610F0002A0583 /* TimeParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeParser.swift; sourceTree = "<group>"; };
 		9E4FDFD3275959B0005D6BE5 /* Archive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archive.swift; sourceTree = "<group>"; };
 		9E4FDFD5275A22C9005D6BE5 /* Times of Namaz.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Times of Namaz.xlsx"; sourceTree = "<group>"; };
 		9E824EE8273FDD8000592526 /* PrayInTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PrayInTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,7 +80,6 @@
 				9E4FDFD5275A22C9005D6BE5 /* Times of Namaz.xlsx */,
 				9E824EEB273FDD8000592526 /* AppDelegate.swift */,
 				9E824EED273FDD8000592526 /* SceneDelegate.swift */,
-				9E129E62275610F0002A0583 /* TimeParser.swift */,
 				9E4FDFD3275959B0005D6BE5 /* Archive.swift */,
 				9E824EEF273FDD8000592526 /* ViewController.swift */,
 				9E824EF1273FDD8000592526 /* Main.storyboard */,
@@ -220,7 +217,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E824EF0273FDD8000592526 /* ViewController.swift in Sources */,
-				9E129E63275610F0002A0583 /* TimeParser.swift in Sources */,
 				9E824EF6273FDD8000592526 /* PrayInTime.xcdatamodeld in Sources */,
 				9E824EEC273FDD8000592526 /* AppDelegate.swift in Sources */,
 				9E824EEE273FDD8000592526 /* SceneDelegate.swift in Sources */,
@@ -386,7 +382,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -418,7 +414,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
