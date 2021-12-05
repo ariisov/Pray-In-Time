@@ -160,8 +160,8 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="бетә" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ye4-Wn-YeS">
-                                <rect key="frame" x="313" y="160" width="44.5" height="23"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="тәмамлана" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ye4-Wn-YeS">
+                                <rect key="frame" x="248.5" y="160" width="109" height="23"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -189,6 +189,15 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <imageReference key="image" image="sun.max.fill" catalog="system" symbolScale="large"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="сәгать" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lTL-w0-o4j">
+                                <rect key="frame" x="293.5" y="54" width="64" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="eXl-h6-FRC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="20"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="G9c-c4-RZ1"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -210,6 +219,7 @@
                             <constraint firstItem="q3k-Cc-dFY" firstAttribute="leading" secondItem="j3f-oy-bj6" secondAttribute="trailing" constant="10" id="IIU-9W-o6W"/>
                             <constraint firstItem="lAM-YL-Ibq" firstAttribute="trailing" secondItem="hLP-Ud-me1" secondAttribute="trailing" constant="-15" id="MeT-4s-7nZ"/>
                             <constraint firstItem="ixR-sr-rye" firstAttribute="width" secondItem="bDp-vR-R3h" secondAttribute="width" multiplier="0.799517" id="Ngp-jw-rqz"/>
+                            <constraint firstItem="lTL-w0-o4j" firstAttribute="top" secondItem="1mx-2S-ZZG" secondAttribute="top" id="NnX-pT-WUY"/>
                             <constraint firstItem="e45-l2-Rs2" firstAttribute="centerY" secondItem="41U-S4-P2q" secondAttribute="centerY" id="NxS-a0-Fga"/>
                             <constraint firstItem="A0g-vB-0dZ" firstAttribute="width" secondItem="bDp-vR-R3h" secondAttribute="width" multiplier="0.8" id="OrD-Jx-LwB"/>
                             <constraint firstItem="ixR-sr-rye" firstAttribute="height" secondItem="bDp-vR-R3h" secondAttribute="height" multiplier="0.14" id="QIB-SQ-W76"/>
@@ -247,6 +257,7 @@
                             <constraint firstItem="A0g-vB-0dZ" firstAttribute="leading" secondItem="32q-WI-SP0" secondAttribute="leading" id="w7v-p2-Smb"/>
                             <constraint firstItem="36S-do-Vri" firstAttribute="leading" secondItem="wlO-Mh-fLC" secondAttribute="trailing" constant="9" id="wQE-Gi-Aqa"/>
                             <constraint firstItem="32q-WI-SP0" firstAttribute="height" secondItem="bDp-vR-R3h" secondAttribute="height" multiplier="0.14" id="xXR-vc-Mdb"/>
+                            <constraint firstItem="lTL-w0-o4j" firstAttribute="trailing" secondItem="73c-zs-MXy" secondAttribute="trailing" id="y1w-1e-m1d"/>
                             <constraint firstItem="32q-WI-SP0" firstAttribute="top" secondItem="G9c-c4-RZ1" secondAttribute="top" constant="50" id="ybk-ld-R1F"/>
                         </constraints>
                     </view>
@@ -255,6 +266,7 @@
                         <outlet property="ahsamButton" destination="hLP-Ud-me1" id="jEE-2O-8P9"/>
                         <outlet property="ahsamTimeLabel" destination="lAM-YL-Ibq" id="pf4-S6-PRH"/>
                         <outlet property="circlePathButton" destination="1mx-2S-ZZG" id="JNd-Rk-Thb"/>
+                        <outlet property="clockTimeLabel" destination="lTL-w0-o4j" id="RW8-Ge-Sk6"/>
                         <outlet property="ikendeButton" destination="ixR-sr-rye" id="d4D-6V-S4R"/>
                         <outlet property="ikendeTimeLabel" destination="CBM-1j-WuZ" id="0X4-ka-E6L"/>
                         <outlet property="morningButton" destination="32q-WI-SP0" id="5t0-VS-CtB"/>
@@ -269,7 +281,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KfQ-yV-xae" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="1Ri-Im-NKc" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-1787" y="657"/>
+            <point key="canvasLocation" x="-1788.4057971014495" y="656.91964285714278"/>
         </scene>
     </scenes>
     <resources>
