@@ -89,6 +89,7 @@ class ViewController: UIViewController
         else {
             launchGetTimes()
         }
+        launchGetTimes()
         let distanceBetweenButtons = morningButton.frame.height / 8
         oyleButton.topAnchor.constraint(equalTo: morningButton.bottomAnchor, constant: distanceBetweenButtons).isActive = true
         ikendeButton.topAnchor.constraint(equalTo: oyleButton.bottomAnchor, constant: distanceBetweenButtons).isActive = true
@@ -158,11 +159,9 @@ class ViewController: UIViewController
                 
                 var rowNumber = UInt.init(366/2)
                 var maxNumber = UInt.init(365)
-                var minNumber = UInt.init(1)
-                var conductor: UInt
+                var minNumber = UInt.init(0)
                 
                 repeat {
-                    conductor = rowNumber
 
                     let dateSelectedCell = worksheet.cells(atColumns: [ ColumnReference("A")! ], rows: [ rowNumber ]).first
                     let day = Calendar.current.component(.day, from: dateSelectedCell!.dateValue!)
@@ -172,16 +171,15 @@ class ViewController: UIViewController
 
                     if (dateFormatter.string(from: selectedDate!) == dateFormatter.string(from: Date())){
                         break
-
                     }
                     else{
+                        
                         if (dateFormatter.string(from: selectedDate!) > dateFormatter.string(from: Date())){
-                            maxNumber = conductor
+                            maxNumber = rowNumber
                             rowNumber = (maxNumber - minNumber)/2
-                            
                         }
                         else {
-                            minNumber = conductor
+                            minNumber = rowNumber
                             rowNumber = rowNumber + ((maxNumber - minNumber)/2)
                         }
                     }
@@ -340,7 +338,6 @@ class ViewController: UIViewController
     
     func launchGetTimes(){
         let queue = DispatchQueue.global(qos: .utility)
-        alreadySetTimes()
         queue.async {
             self.getTimesFromSource()
             DispatchQueue.main.async {
