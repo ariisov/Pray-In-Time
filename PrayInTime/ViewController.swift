@@ -9,7 +9,7 @@ import UIKit
 import CoreXLSX
 
 
-class ViewController: UIViewController
+class MainViewController: UIViewController
 {
     
     @IBOutlet weak var morningButton: UIButton!
@@ -20,11 +20,11 @@ class ViewController: UIViewController
     
     @IBOutlet weak var circlePathButton: UIButton!
     
-    let lightGreen = UIColor(red: 0.37, green: 0.871, blue: 0.643, alpha: 1)
-    let lightRed = UIColor(red: 0.957, green: 0.369, blue: 0.427, alpha: 1)
-    let lightOrange = UIColor(red: 1, green: 0.615, blue: 0.38, alpha: 1)
-    let lightPurple = UIColor(red: 0.714, green: 0.471, blue: 1, alpha: 1)
-    let lightBlue = UIColor(red: 0.01, green: 0.424, blue: 1, alpha: 1)
+    let lightGreen = UIColor(rgb: 0xe2d3cd)
+    let lightRed = UIColor(rgb: 0xe3dad5)
+    let lightOrange = UIColor(rgb: 0xe6cdb5)
+    let lightPurple = UIColor(rgb: 0xf7d8b5)
+    let lightBlue = UIColor(rgb: 0xd0c8b6)
     var radiusCorners = 36.0
     
     @IBOutlet weak var morningStartTimeLabel: UILabel!
@@ -46,33 +46,12 @@ class ViewController: UIViewController
         
         scheduledTimerWithTimeInterval()
 
-        morningButton.backgroundColor = lightGreen
         morningButton.layer.cornerRadius = radiusCorners
-        oyleButton.backgroundColor = lightRed
         oyleButton.layer.cornerRadius = radiusCorners
-        ikendeButton.backgroundColor = lightOrange
         ikendeButton.layer.cornerRadius = radiusCorners
-        ahsamButton.backgroundColor = lightPurple
         ahsamButton.layer.cornerRadius = radiusCorners
-        yastuButton.backgroundColor = lightBlue
         yastuButton.layer.cornerRadius = radiusCorners
-        
-        if UserDefaults.standard.bool(forKey: "isMorningButtonDark") {
-            changeMorningButtonDarkness()
-        }
-        if UserDefaults.standard.bool(forKey: "isOyleButtonDark") {
-            changeOyleButtonDarkness()
-        }
-        if UserDefaults.standard.bool(forKey: "isIkendeButtonDark") {
-            changeIkendeButtonDarkness()
-        }
-        if UserDefaults.standard.bool(forKey: "isAhsamButtonDark") {
-            changeAhsamButtonDarkness()
-        }
-        if UserDefaults.standard.bool(forKey: "isYastuButtonDark") {
-            changeYastuButtonDarkness()
-        }
-        
+
         if UserDefaults.standard.bool(forKey: "Time was set"){
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MM.dd"
@@ -96,6 +75,41 @@ class ViewController: UIViewController
         ahsamButton.topAnchor.constraint(equalTo: ikendeButton.bottomAnchor, constant: distanceBetweenButtons).isActive = true
         yastuButton.topAnchor.constraint(equalTo: ahsamButton.bottomAnchor, constant: distanceBetweenButtons).isActive = true
     }
+        
+    // MARK: ViewWillAppear
+
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        
+        self.view.backgroundColor = UIColor.white
+        
+        
+        morningButton.backgroundColor = lightGreen
+        oyleButton.backgroundColor = lightRed
+        ikendeButton.backgroundColor = lightOrange
+        ahsamButton.backgroundColor = lightPurple
+        yastuButton.backgroundColor = lightBlue
+        
+        if UserDefaults.standard.bool(forKey: "isMorningButtonDark") {
+            changeMorningButtonDarkness()
+        }
+        if UserDefaults.standard.bool(forKey: "isOyleButtonDark") {
+            changeOyleButtonDarkness()
+        }
+        if UserDefaults.standard.bool(forKey: "isIkendeButtonDark") {
+            changeIkendeButtonDarkness()
+        }
+        if UserDefaults.standard.bool(forKey: "isAhsamButtonDark") {
+            changeAhsamButtonDarkness()
+        }
+        if UserDefaults.standard.bool(forKey: "isYastuButtonDark") {
+            changeYastuButtonDarkness()
+        }
+    }
+
+        
+       
     
     // MARK: Timer clock
     func scheduledTimerWithTimeInterval(){
@@ -346,4 +360,24 @@ class ViewController: UIViewController
         }
     }
     
+}
+
+
+
+extension UIColor {
+   convenience init(red: Int, green: Int, blue: Int) {
+       assert(red >= 0 && red <= 255, "Invalid red component")
+       assert(green >= 0 && green <= 255, "Invalid green component")
+       assert(blue >= 0 && blue <= 255, "Invalid blue component")
+
+       self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+   }
+
+   convenience init(rgb: Int) {
+       self.init(
+           red: (rgb >> 16) & 0xFF,
+           green: (rgb >> 8) & 0xFF,
+           blue: rgb & 0xFF
+       )
+   }
 }
