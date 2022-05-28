@@ -46,12 +46,18 @@ class MainViewController: UIViewController
         
         scheduledTimerWithTimeInterval()
 
-        morningButton.layer.cornerRadius = radiusCorners
-        oyleButton.layer.cornerRadius = radiusCorners
-        ikendeButton.layer.cornerRadius = radiusCorners
-        ahsamButton.layer.cornerRadius = radiusCorners
-        yastuButton.layer.cornerRadius = radiusCorners
-
+        let buttons: [UIButton] = [morningButton,
+                                   oyleButton,
+                                   ikendeButton,
+                                   ahsamButton,
+                                   yastuButton]
+        for button in buttons {
+            button.layer.cornerRadius = radiusCorners
+            button.layer.shadowColor = UIColor.black.cgColor
+            button.layer.shadowOffset = CGSize(width: 2, height: 2)
+            button.layer.shadowRadius = 5
+            button.layer.shadowOpacity = 0.3
+            
         if UserDefaults.standard.bool(forKey: "Time was set"){
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MM.dd"
@@ -74,6 +80,8 @@ class MainViewController: UIViewController
         ikendeButton.topAnchor.constraint(equalTo: oyleButton.bottomAnchor, constant: distanceBetweenButtons).isActive = true
         ahsamButton.topAnchor.constraint(equalTo: ikendeButton.bottomAnchor, constant: distanceBetweenButtons).isActive = true
         yastuButton.topAnchor.constraint(equalTo: ahsamButton.bottomAnchor, constant: distanceBetweenButtons).isActive = true
+
+        }
     }
         
     // MARK: ViewWillAppear
